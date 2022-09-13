@@ -3,7 +3,6 @@ package com.example.Project.ProjectApi.service;
 
 import java.util.regex.Pattern;
 import java.util.List;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +28,6 @@ public class UserService {
 	SelectedItemsRepository selectedItemsRepository;
 	
 	
-	@Test
 	public boolean testUsingSimpleRegex(String email) {
 		    String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
 		            + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
