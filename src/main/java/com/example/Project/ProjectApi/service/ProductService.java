@@ -159,7 +159,7 @@ public class ProductService {
 		
 		 List<ProductDetails> productDetails=productDetailsRepository.findAll();
 		ReturnProduct curr_product= new ReturnProduct();
-		
+		int x=0;
 		for (ProductDetails productDetails2 : productDetails) {
 			if(productDetails2.pId.productId==productId && productDetails2.color.equals(chosenColor))
 			{
@@ -169,6 +169,10 @@ public class ProductService {
 				sizeColorAvailableImage.size=productDetails2.size;
 				sizeColorAvailableImage.image=productDetails2.image;
 				curr_product.sizeColorAvailableImage.add(sizeColorAvailableImage);
+				x++;
+			}
+				if(productDetails2.pId.productId==productId && productDetails2.color.equals(chosenColor) && x==1) {
+				
 				curr_product.category=productRepository.findById(productId).get().category;
 				curr_product.description=productRepository.findById(productId).get().description;
 				curr_product.isAddedToCart=productRepository.findById(productId).get().isAddedToCart;
