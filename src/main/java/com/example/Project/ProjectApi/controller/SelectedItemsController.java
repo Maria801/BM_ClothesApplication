@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.Project.ProjectApi.classes.Dataa;
 import com.example.Project.ProjectApi.classes.ItemsInCart;
 import com.example.Project.ProjectApi.classes.SizeColorAvailableImage;
+import com.example.Project.ProjectApi.classes.TotalPrice;
 import com.example.Project.ProjectApi.entity.ClassId;
 import com.example.Project.ProjectApi.entity.SelectedItems;
 import com.example.Project.ProjectApi.service.SelectedItemsService;
@@ -50,4 +51,8 @@ public class SelectedItemsController {
     }
 
 
+    @GetMapping(value= "/totalPrice/userId/{userId}")
+    public TotalPrice totalPrice(@PathVariable int userId){
+        return selectedItemsService.getTotalPrice(userId);
+    }
 }
