@@ -47,8 +47,7 @@ public class UserService {
 				throw new RuntimeException("Password or E-Mail mismatch.");
 			else {
 				senduser.e_Mail=user.email;
-				senduser.f_name=user.f_name;
-				senduser.l_Name=user.l_Name;
+				senduser.name=user.name;
 				senduser.user_Id=user.userId;
 			}
 		}
@@ -68,8 +67,7 @@ public class UserService {
 		else {
 			User addUser= new User();
 		addUser.email=register.e_Mail;
-		addUser.f_name=register.f_name;
-		addUser.l_Name=register.l_name;
+		addUser.name=register.name;
 		addUser.password=register.password;
         userRepository.save(addUser);
 		}
