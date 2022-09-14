@@ -41,9 +41,9 @@ public class ProductController {
 	    	return productService.getProductById(productId,userId);
 	    }
 	 
-	 @GetMapping(value= {"/getAllProducts/{userId}"})
-	 public List<HomeProducts> getAllProducts(@PathVariable int userId){
-		 return productService.getAllProducts(userId);
+	 @GetMapping(value= {"/getAllProducts"})
+	 public List<HomeProducts> getAllProducts(){
+		 return productService.getAllProducts();
 	 }
 	 
 	 @PostMapping(value= {"/addColorOrSize"})
