@@ -25,6 +25,9 @@ public class SelectedItemsService {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    UserRepository userRepository;
+    
     public void addSelectedItems(Dataa data) {
 
         User useridd=selectedItemsRepository.findUserById(data.userId);
@@ -47,19 +50,30 @@ public class SelectedItemsService {
     }
 
     public List<ItemsInCart> getSelectedItems(int userIdd) {
-        User useridd=selectedItemsRepository.findUserById(userIdd);
+        User useridd=userRepository.findByUserId(userIdd);
         List<SelectedItems> lisItems=selectedItemsRepository.findBySelectedUserId(useridd);
         List<ItemsInCart> lisCartItem=new ArrayList<>();
         for(int i=0; i<lisItems.size(); ++i)
         {
-            SelectedItems sItem=lisItems.get(i);
+          //  SelectedItems sItem=lisItems.get(i);
             ItemsInCart itemsCart=new ItemsInCart();
-            itemsCart.productDetails=sItem.selectedProduct;
-            itemsCart.quantity=sItem.boughtItemsCount;
+            itemsCart.AvailableItems=lisItems.get(i).selectedProduct.AvailableItems;
+            itemsCart.category=lisItems.get(i).selectedProduct.pId.category;
+            itemsCart.color=lisItems.get(i).selectedProduct.color;
+            itemsCart.description=lisItems.get(i).selectedProduct.pId.description;
+            itemsCart.image=lisItems.get(i).selectedProduct.image;
+            itemsCart.isAddedToCart=true;
+            itemsCart.name=lisItems.get(i).selectedProduct.pId.name;
+            itemsCart.numberOfboughtItems=lisItems.get(i).selectedProduct.pId.numberOfboughtItems;
+            itemsCart.price=lisItems.get(i).selectedProduct.pId.price;
+            itemsCart.productId=lisItems.get(i).selectedProduct.pId.productId;
+            itemsCart.size=lisItems.get(i).selectedProduct.size;
+            itemsCart.quantity=lisItems.get(i).boughtItemsCount;
             lisCartItem.add(itemsCart);
         }
         return lisCartItem;
     }
+    
     public void buyItemsService(int userIdd)
     {
         //List<ItemsInCart> cartItems=getSelectedItems(userIdd);
