@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class sendUser {
 	public int user_Id;
 	public String e_Mail;
-	public String f_name;
-	public String l_Name;
+	public String name;
 }
