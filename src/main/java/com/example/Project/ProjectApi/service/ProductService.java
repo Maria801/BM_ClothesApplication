@@ -115,27 +115,17 @@ public class ProductService {
 
 
 	// get all products
-	public  List<HomeProducts> getAllProducts(int userId) {
+	public  List<HomeProducts> getAllProducts() {
         List<Product> product;
         product=productRepository.findAll();
-		User user =userRepository.findById(userId).get();
-		List<SelectedItems>selectedItems;
-		selectedItems=selectedItemsRepository.findBySelectedUserId(user);
 		List<ProductDetails> productDetails= productDetailsRepository.findAll();
 		
-		for (int i = 0; i < product.size(); i++) {
-			if(product.get(i).AvailableItems==0) {
-				product.remove(i);
-			}
-			for (SelectedItems selectedItems2 : selectedItems) {
-			  if(product.get(i).productId == selectedItems2.selectedProduct.pId.productId)	
-				  product.get(i).isAddedToCart=true;
-			}
-			
-		}
 		
 		List<HomeProducts> homeProducts= new ArrayList<HomeProducts>();
 		for (int i = 0; i <  product.size(); i++) {
+			if(product.get(i).AvailableItems==0) {
+				continue;
+			}
 			HomeProducts curr_product= new HomeProducts();
 			curr_product.name=product.get(i).name;
 			curr_product.price=product.get(i).price;
