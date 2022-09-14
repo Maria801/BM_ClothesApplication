@@ -13,7 +13,7 @@ public class SizeColorAvailableImage {
 
 	    public String color;
 	    public String size;
-	    public int AvailableItems;
 	    public String image;
+	    public int AvailableItems;
 	
 }
