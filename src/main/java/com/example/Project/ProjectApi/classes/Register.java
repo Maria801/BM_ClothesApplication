@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Register {
 	
-	public String f_name;
-	public String l_name;
+	public String name;
 	public String e_Mail;
 	public String password;
 	
