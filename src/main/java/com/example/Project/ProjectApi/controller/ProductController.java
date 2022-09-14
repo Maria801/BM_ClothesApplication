@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Project.ProjectApi.classes.EnterData;
+import com.example.Project.ProjectApi.classes.HomeProducts;
 import com.example.Project.ProjectApi.classes.ReturnProduct;
 import com.example.Project.ProjectApi.entity.Product;
 import com.example.Project.ProjectApi.entity.ProductDetails;
@@ -41,7 +42,7 @@ public class ProductController {
 	    }
 	 
 	 @GetMapping(value= {"/getAllProducts/{userId}"})
-	 public  List<Product> getAllProducts(@PathVariable int userId){
+	 public List<HomeProducts> getAllProducts(@PathVariable int userId){
 		 return productService.getAllProducts(userId);
 	 }
 	 
@@ -51,7 +52,6 @@ public class ProductController {
 	 }
 	 
 	 @GetMapping (value= {"/getProductBycolor/{userId}/{productId}/{chosenColor}"})
-	 
 	 public ReturnProduct returnBycolor(@PathVariable int userId, @PathVariable int productId,@PathVariable String chosenColor) {
 		return  productService.returnBycolor(userId, productId,chosenColor);
 	 }
