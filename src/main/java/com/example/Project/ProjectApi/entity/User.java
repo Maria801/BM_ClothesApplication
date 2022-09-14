@@ -25,8 +25,7 @@ public class User {
 	@Id
 	@GeneratedValue
 	public int userId;
-	public String f_name;
-	public String l_Name;
+	public String name;
 	public String password;
 	public String email;
 	
