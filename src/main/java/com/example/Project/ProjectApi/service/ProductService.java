@@ -96,7 +96,7 @@ public class ProductService {
 							 SizeColorAvailableImage sizeColorAvailable= new SizeColorAvailableImage();
 							 sizeColorAvailable.size=productDetails2.size;
 							 sizeColorAvailable.color=productDetails2.color;
-							 sizeColorAvailable.AvailableItems=productDetails2.AvailableItems;
+							 //sizeColorAvailable.AvailableItems=productDetails2.AvailableItems;
 							 sizeColorAvailable.image=productDetails2.image;
 							 curr_product.sizeColorAvailableImage.add(sizeColorAvailable);
 							curr_product.category=productRepository.findById(productId).get().category;
@@ -165,7 +165,7 @@ public class ProductService {
 			{
 				SizeColorAvailableImage sizeColorAvailableImage= new SizeColorAvailableImage();
 				sizeColorAvailableImage.color=productDetails2.color;
-				sizeColorAvailableImage.AvailableItems=productDetails2.AvailableItems;
+				//sizeColorAvailableImage.AvailableItems=productDetails2.AvailableItems;
 				sizeColorAvailableImage.size=productDetails2.size;
 				sizeColorAvailableImage.image=productDetails2.image;
 				curr_product.sizeColorAvailableImage.add(sizeColorAvailableImage);
