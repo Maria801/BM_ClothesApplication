@@ -159,10 +159,11 @@ public class ProductService {
 		
 		 List<ProductDetails> productDetails=productDetailsRepository.findAll();
 		ReturnProduct curr_product= new ReturnProduct();
-		SizeColorAvailableImage sizeColorAvailableImage= new SizeColorAvailableImage();
+		
 		for (ProductDetails productDetails2 : productDetails) {
 			if(productDetails2.pId.productId==productId && productDetails2.color.equals(chosenColor))
 			{
+				SizeColorAvailableImage sizeColorAvailableImage= new SizeColorAvailableImage();
 				sizeColorAvailableImage.color=productDetails2.color;
 				sizeColorAvailableImage.AvailableItems=productDetails2.AvailableItems;
 				sizeColorAvailableImage.size=productDetails2.size;
