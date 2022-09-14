@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.Project.ProjectApi.classes.EnterData;
+import com.example.Project.ProjectApi.classes.HomeProducts;
 import com.example.Project.ProjectApi.classes.ReturnProduct;
 import com.example.Project.ProjectApi.classes.SizeColorAvailableImage;
 import com.example.Project.ProjectApi.entity.Product;
@@ -114,7 +115,7 @@ public class ProductService {
 
 
 	// get all products
-	public  List<Product> getAllProducts(int userId) {
+	public  List<HomeProducts> getAllProducts(int userId) {
         List<Product> product;
         product=productRepository.findAll();
 		User user =userRepository.findById(userId).get();
@@ -133,7 +134,23 @@ public class ProductService {
 			
 		}
 		
-		return product;
+		List<HomeProducts> homeProducts= new ArrayList<HomeProducts>();
+		for (int i = 0; i <  product.size(); i++) {
+			HomeProducts curr_product= new HomeProducts();
+			curr_product.name=product.get(i).name;
+			curr_product.price=product.get(i).price;
+			curr_product.proId=product.get(i).productId;
+			for (ProductDetails productDetails2 : productDetails) {
+				if(productDetails2.pId.productId==product.get(i).productId) {
+					curr_product.image=productDetails2.image;
+					break;
+			}
+			
+	    	}
+			homeProducts.add(curr_product);
+		}
+		
+		return homeProducts;
 	}
 	
 	
