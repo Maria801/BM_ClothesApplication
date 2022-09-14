@@ -14,7 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ItemsInCart {
-	    public ProductDetails productDetails;
-	    public int quantity;
+	public int productId;
+    public String name;
+    public int price;
+    public String description;
+    public boolean isAddedToCart;
+    public String category;
+    public int numberOfboughtItems;
+	public String image;
+    public String size;
+    public String color;
+    public int AvailableItems;
+    public int quantity;
 }
 
