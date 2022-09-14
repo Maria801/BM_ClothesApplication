@@ -6,6 +6,7 @@ import com.example.Project.ProjectApi.entity.User;
 import com.example.Project.ProjectApi.classes.Dataa;
 import com.example.Project.ProjectApi.classes.ItemsInCart;
 import com.example.Project.ProjectApi.classes.SizeColorAvailableImage;
+import com.example.Project.ProjectApi.classes.TotalPrice;
 import com.example.Project.ProjectApi.entity.ClassId;
 import com.example.Project.ProjectApi.entity.Product;
 import com.example.Project.ProjectApi.entity.ProductDetails;
@@ -124,5 +125,22 @@ public class SelectedItemsService {
                 selectedItemsRepository.delete(sItems);
             }
         }
+    }
+    
+    public TotalPrice getTotalPrice(int userIdd)
+    {
+        TotalPrice tp=new TotalPrice();
+        User useridd=selectedItemsRepository.findUserById(userIdd);
+        List<SelectedItems> cartItems=selectedItemsRepository.findBySelectedUserId(useridd);
+        if(cartItems!=null)
+        {
+            for(int i=0; i<cartItems.size(); ++i)
+            {
+                tp.totalPrice+=(cartItems.get(i).boughtItemsCount)*cartItems.get(i).selectedProduct.pId.price;
+                tp.shipping+= (tp.totalPrice*10)/100;
+            }
+
+        }
+        return tp;
     }
 }
